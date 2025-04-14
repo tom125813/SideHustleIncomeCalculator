@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +31,9 @@
         "keywords": "side hustle calculator, uber earnings calculator, fiverr income calculator, doordash profit calculator, airbnb income estimator"
     }
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4271177465403181"
      crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary: #6366f1;
@@ -470,20 +472,471 @@
             .ad-content { height: 200px; }
             select, input[type="number"], input[type="checkbox"] { font-size: 0.9rem; padding: 10px; }
         }
+
+        /* Add the new CSS here from the previous section */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --background: #f8fafc;
+            --card: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --card-shadow: rgba(0, 0, 0, 0.05);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e2e8f0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 4px solid var(--border);
+            text-align: center;
+        }
+
+        .navbar-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .logo-sidehustle {
+            background: linear-gradient(90deg, var(--primary) 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-calc {
+            background: linear-gradient(90deg, #9ca3af 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-options {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .nav-options a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-options a:hover {
+            color: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            min-width: 400px;
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .dropdown-category {
+            flex: 1 1 45%;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        .dropdown-category:not(:last-child):not(:nth-last-child(2)) {
+            border-right: 1px solid var(--border);
+        }
+
+        .dropdown-category:nth-child(2n) {
+            padding-right: 0;
+        }
+
+        .dropdown-category h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .dropdown-category a {
+            display: block;
+            padding: 8px 0;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .dropdown-category a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger .line {
+            width: 30px;
+            height: 4px;
+            background: var(--primary);
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.cross .line1 {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.cross .line2 {
+            opacity: 0;
+        }
+
+        .hamburger.cross .line3 {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .calculator, .results-panel {
+            padding: 40px;
+            border-radius: 16px;
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 8px 32px var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        select, input[type="number"], input[type="checkbox"] {
+            padding: 14px 18px;
+            font-size: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .button {
+            padding: 14px 28px;
+            font-size: 1rem;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .button.secondary {
+            background: #e2e8f0;
+            color: var(--text);
+        }
+
+        .button.secondary:hover {
+            background: #d1d5db;
+            transform: translateY(-2px);
+        }
+
+        .results-panel h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .result-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tips-section {
+            background: #ecfdf5;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .tips-section h4 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        #tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        #tips-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        #tips-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hustle-card {
+            padding: 25px;
+            border-radius: 16px;
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 8px 32px var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .hustle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hustle-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .hustle-card h3 {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .hustle-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .faq-question {
+            background: transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .faq-answer {
+            background: #f8fafc;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-options {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 20px 0;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(10px);
+                width: 100%;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .nav-options.active {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+
+            .dropdown-content {
+                position: static;
+                transform: none;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                padding: 0;
+                flex-direction: column;
+            }
+
+            .dropdown-category {
+                flex: 1 1 100%;
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid var(--border);
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+            }
+
+            .dropdown-category:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+
+            .calculator, .results-panel {
+                padding: 30px;
+            }
+
+            .result-value {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container navbar-content">
-            <a href="index.html" class="logo">
-                <i class="fas fa-calculator"></i>
-                SideHustleCalc
+            <a href="https://sidehustlecalc.com" class="logo">
+                <span class="logo-sidehustle">SideHustle</span><span class="logo-calc">Calc</span>
             </a>
+            <div class="hamburger">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </div>
             <div class="nav-options">
-                <a href="index.html">Home</a>
-                <a href="calculator.html">Calculator</a>
-                <a href="blogs.html">Blogs</a>
-                <select id="currency-selector" class="currency-selector" aria-label="Select Currency">
+                <a href="https://sidehustlecalc.com">Home</a>
+                <a href="https://sidehustlecalc.com/calculator">Calculator</a>
+                <div class="dropdown">
+                    <a href="https://sidehustlecalc.com/guides">Guides</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-category">
+                            <h4>Driving</h4>
+                            <a href="https://sidehustlecalc.com/guides/uber">Uber</a>
+                        </div>
+                        <div class="dropdown-category">
+                            <h4>Delivery</h4>
+                            <a href="https://sidehustlecalc.com/guides/doordash">DoorDash</a>
+                            <a href="https://sidehustlecalc.com/guides/taskrabbit">TaskRabbit</a>
+                        </div>
+                        <div class="dropdown-category">
+                            <h4>Content Creation</h4>
+                            <a href="https://sidehustlecalc.com/guides/instagram">Instagram</a>
+                            <a href="https://sidehustlecalc.com/guides/tiktok">TikTok</a>
+                            <a href="https://sidehustlecalc.com/guides/youtube">YouTube</a>
+                            <a href="https://sidehustlecalc.com/guides/patreon">Patreon</a>
+                            <a href="https://sidehustlecalc.com/guides/affiliate-marketing">Affiliate Marketing</a>
+                            <a href="https://sidehustlecalc.com/guides/stockphotography">Stock Photography</a>
+                        </div>
+                        <div class="dropdown-category">
+                            <h4>Freelancing & Services</h4>
+                            <a href="https://sidehustlecalc.com/guides/etsy">Etsy</a>
+                            <a href="https://sidehustlecalc.com/guides/fiverr">Fiverr</a>
+                            <a href="https://sidehustlecalc.com/guides/upwork">Upwork</a>
+                            <a href="https://sidehustlecalc.com/guides/virtualassistant">Virtual Assistant</a>
+                            <a href="https://sidehustlecalc.com/guides/tutoring">Tutoring</a>
+                            <a href="https://sidehustlecalc.com/guides/rover">Rover</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1 id="page-title">Side Hustle Income Calculator</h1>
+            <p class="subtitle">Estimate your earnings from 30+ side hustles like Uber, Fiverr, and Airbnb with accurate, tailored calculations. Free and easy to use!</p>
+        </header>
+
+        <div class="calculator-container">
+            <div class="calculator glass">
+                <h2>Calculate Your Earnings</h2>
+                <select id="currency-selector" class="currency-selector" aria-label="Select Currency" style="max-width: 100px; text-align: center;">
                     <option value="USD" data-flag="🇺🇸">USD</option>
                     <option value="EUR" data-flag="🇪🇺">EUR</option>
                     <option value="GBP" data-flag="🇬🇧">GBP</option>
@@ -495,21 +948,7 @@
                     <option value="ZAR" data-flag="🇿🇦">ZAR</option>
                     <option value="CHF" data-flag="🇨🇭">CHF</option>
                 </select>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-
-
-        <header>
-            <h1 id="page-title">Side Hustle Income Calculator</h1>
-            <p class="subtitle">Estimate your earnings from 30+ side hustles like Uber, Fiverr, and Airbnb with accurate, tailored calculations. Free and easy to use!</p>
-        </header>
-
-        <div class="calculator-container">
-            <div class="calculator glass">
-                <h2>Calculate Your Earnings</h2>
+                <br><br>
                 <form id="calculator-form">
                     <div class="form-group">
                         <label for="hustle">Select Your Side Hustle:</label>
@@ -589,7 +1028,6 @@
             </div>
 
             <div class="results-panel glass">
-
                 <h2>Your Earnings Estimate</h2>
                 <p id="calculator-explanation">Select a side hustle to see tailored calculations.</p>
                 <div id="results" class="results">
@@ -620,89 +1058,41 @@
             </div>
         </div>
 
-
         <section class="hustle-details">
             <h2>Top Side Hustles in 2025</h2>
             <div class="hustle-grid">
                 <div class="hustle-card glass">
-                    <img src="https://placehold.co/280x150?text=Uber" alt="Uber" class="hustle-image">
-                    <h3>Uber Driver</h3>
-                    <p>Earn $15-30/hour driving passengers. <a href="/blog/uber.html">Learn more</a>.</p>
+                    <i class="fas fa-car hustle-icon"></i>
+                    <h3>Uber</h3>
+                    <p>Drive passengers and earn flexible income on your schedule. <a href="/guides/uber.html">Learn more</a>.</p>
                 </div>
                 <div class="hustle-card glass">
-                    <img src="https://placehold.co/280x150?text=Uber+Eats" alt="Uber Eats" class="hustle-image">
-                    <h3>Uber Eats</h3>
-                    <p>Make $12-25/hour delivering food. <a href="/blog/ubereats.html">Learn more</a>.</p>
+                    <i class="fas fa-hamburger hustle-icon"></i>
+                    <h3>DoorDash</h3>
+                    <p>Deliver food and make money with this popular gig app. <a href="/guides/doordash.html">Learn more</a>.</p>
                 </div>
                 <div class="hustle-card glass">
-                    <img src="https://placehold.co/280x150?text=Fiverr" alt="Fiverr" class="hustle-image">
-                    <h3>Fiverr Freelancer</h3>
-                    <p>Earn $20-100/hour on projects. <a href="/blog/fiverr.html">Learn more</a>.</p>
+                    <i class="fas fa-laptop-code hustle-icon"></i>
+                    <h3>Fiverr</h3>
+                    <p>Offer freelance services and build a client base online. <a href="/guides/fiverr.html">Learn more</a>.</p>
                 </div>
                 <div class="hustle-card glass">
-                    <img src="https://placehold.co/280x150?text=Twitch" alt="Twitch" class="hustle-image">
-                    <h3>Twitch Streaming</h3>
-                    <p>Monetize your gaming passion. <a href="/blog/twitch.html">Learn more</a>.</p>
+                    <i class="fas fa-camera hustle-icon"></i>
+                    <h3>Instagram</h3>
+                    <p>Monetize your social media presence with brand deals. <a href="/guides/instagram.html">Learn more</a>.</p>
                 </div>
                 <div class="hustle-card glass">
-                    <img src="https://placehold.co/280x150?text=Etsy" alt="Etsy" class="hustle-image">
-                    <h3>Etsy Shop</h3>
-                    <p>Sell crafts with 20-70% margins. <a href="/blog/etsy.html">Learn more</a>.</p>
+                    <i class="fas fa-store hustle-icon"></i>
+                    <h3>Etsy</h3>
+                    <p>Sell handmade or vintage items to a global audience. <a href="/guides/etsy.html">Learn more</a>.</p>
                 </div>
                 <div class="hustle-card glass">
-                    <img src="https://placehold.co/280x150?text=Affiliate+Marketing" alt="Affiliate Marketing" class="hustle-image">
+                    <i class="fas fa-link hustle-icon"></i>
                     <h3>Affiliate Marketing</h3>
-                    <p>Earn commissions online. <a href="/blog/affiliatemarketing.html">Learn more</a>.</p>
-                </div>
-                <div class="hustle-card glass">
-                    <img src="https://placehold.co/280x150?text=Substack" alt="Substack" class="hustle-image">
-                    <h3>Substack</h3>
-                    <p>Monetize newsletters as a writer. <a href="/blog/substack.html">Learn more</a>.</p>
+                    <p>Earn commissions by promoting products online. <a href="/guides/affiliatemarketing.html">Learn more</a>.</p>
                 </div>
             </div>
         </section>
-
-
-        <section class="blog-section">
-      <h2>Featured Articles</h2>
-      <div class="blog-grid">
-          <div class="blog-card">
-              <img src="https://placehold.co/280x150?text=Uber+Guide" alt="Uber Guide">
-              <div class="blog-card-content">
-                  <h4><a href="/blog/uber.html">How to Maximize Uber Earnings</a></h4>
-                  <p>Tips to boost your income as an Uber driver in 2025.</p>
-              </div>
-          </div>
-          <div class="blog-card">
-              <img src="https://placehold.co/280x150?text=Fiverr+Guide" alt="Fiverr Guide">
-              <div class="blog-card-content">
-                  <h4><a href="/blog/fiverr.html">Starting a Fiverr Side Hustle</a></h4>
-                  <p>Learn how to land high-paying gigs on Fiverr.</p>
-              </div>
-          </div>
-          <div class="blog-card">
-              <img src="https://placehold.co/280x150?text=Twitch+Guide" alt="Twitch Guide">
-              <div class="blog-card-content">
-                  <h4><a href="/blog/twitch.html">Monetizing Your Twitch Stream</a></h4>
-                  <p>Strategies to earn from streaming in 2025.</p>
-              </div>
-          </div>
-          <div class="blog-card">
-              <img src="https://placehold.co/280x150?text=Affiliate+Marketing+Guide" alt="Affiliate Marketing Guide">
-              <div class="blog-card-content">
-                  <h4><a href="/blog/affiliatemarketing.html">How to Start Affiliate Marketing in 2025</a></h4>
-                  <p>Launch an affiliate marketing side hustle with proven strategies.</p>
-              </div>
-          </div>
-          <div class="blog-card">
-              <img src="https://placehold.co/280x150?text=Substack+Guide" alt="Substack Guide">
-              <div class="blog-card-content">
-                  <h4><a href="/blog/substack.html">How to Make Money with Substack in 2025</a></h4>
-                  <p>Turn your Substack newsletter into a profitable side hustle.</p>
-              </div>
-          </div>
-      </div>
-  </section>
 
         <section class="faq-section">
             <h2>Frequently Asked Questions</h2>
@@ -733,6 +1123,69 @@
                     <p>Yes! Run calculations for each hustle separately and sum the results for a combined estimate.</p>
                 </div>
             </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I account for expenses?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Enter your weekly expenses in the optional field, including costs like gas, materials, or subscriptions, for a more accurate net earnings estimate.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Why do results vary by location?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Some side hustles, like Uber or DoorDash, have location-specific rates and demand. The calculator adjusts based on your inputs for city size or market density.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I use this for full-time income?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, the calculator works for any hours per week (up to 168). Adjust your hours to estimate full-time earnings.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How often are rates updated?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Rates are updated for 2025 based on the latest platform fees, market trends, and user data. We review annually or as major changes occur.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What if my side hustle isn’t listed?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We cover 30+ popular side hustles. If yours isn’t listed, choose a similar one (e.g., use Fiverr for freelance gigs) or contact us to suggest adding it!</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do platform fees affect my earnings?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Platforms like Uber or Fiverr take a percentage (e.g., 20-25%) of your earnings. Our calculator factors these fees into your net estimate.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I save my calculations?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Currently, you can’t save calculations directly, but you can screenshot or note down your results. We’re working on adding a save feature in the future!</p>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -741,7 +1194,6 @@
             <p>© 2025 SideHustleCalc. All rights reserved. Updated with 2025 rates.</p>
         </div>
     </footer>
-
     <script>
         const hustles = {
             uber: {
@@ -2198,4 +2650,4 @@
                     ogTitle.setAttribute('content', `Side Hustle Income Calculator`);
                 }
             });
-            </script></body></html>
+            </script>  <script src="navbar.js"></script></body></html>

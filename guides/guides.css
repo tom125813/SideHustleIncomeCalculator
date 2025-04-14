@@ -1,0 +1,296 @@
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --background: #f8fafc;
+    --card: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(255, 255, 255, 0.4);
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    --border: #e2e8f0;
+    --accent: #10b981; /* Added for highlights */
+    --danger: #ef4444; /* For potential error/warning highlights */
+}
+
+/* General Body Styling */
+body {
+    background: var(--background);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Glassmorphism Effect */
+.glass {
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+}
+
+/* Article Header */
+.article-header {
+    text-align: center;
+    padding: 100px 20px 50px; /* Increased top padding for gap */
+    /*background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);*/
+    background: transparent;
+    border-radius: 16px;
+    margin: 30px 0; /* Added margin for spacing */
+}
+.section-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+}
+
+.article-header h1 {
+    font-size: 3.5rem; /* Larger for better hierarchy */
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.article-header .meta {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* Article Content */
+.article-content {
+    max-width: 1200px; /* Narrower for better readability */
+    margin: 0 auto 80px; /* Increased bottom margin */
+    padding: 0 20px;
+}
+
+.article-content h2 {
+    font-size: 2.2rem;
+    color: var(--primary-dark);
+    margin: 50px 0 25px;
+    border-left: 4px solid var(--primary);
+    padding-left: 15px;
+    line-height: 1.3;
+}
+
+.article-content p {
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 25px;
+    line-height: 1.8; /* Improved readability */
+}
+
+.article-content ul {
+    margin: 25px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.article-content li {
+    font-size: 1.1rem;
+    color: var(--text);
+    padding: 15px 0;
+    position: relative;
+    padding-left: 35px;
+}
+
+.article-content li::before {
+    content: '✔';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-size: 1.3rem;
+}
+
+.article-content li:last-child {
+    border-bottom: none;
+}
+
+.article-content a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.article-content a:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background: var(--primary);
+    color: #ffffff; /* Ensured readability */
+    padding: 16px 32px; /* Larger padding for better click area */
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 30px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Highlight Box */
+.highlight-box {
+    background: #ecfdf5;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 4px solid var(--accent);
+}
+
+.highlight-box i {
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+.highlight-box p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+/* Pull Quote */
+.pull-quote {
+    background: rgba(99, 102, 241, 0.05);
+    border-left: 4px solid var(--primary);
+    padding: 30px;
+    margin: 40px 0;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--text);
+    position: relative;
+}
+
+.pull-quote::before {
+    content: '“';
+    font-size: 4rem;
+    color: var(--primary);
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    opacity: 0.3;
+}
+
+/* Related and Popular Guides */
+.related-articles, .popular-guides {
+    margin: 80px 0;
+    padding: 0 20px;
+}
+
+.related-articles h2, .popular-guides h2 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.related-grid, .popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Slightly wider cards */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.related-card, .popular-card {
+    padding: 30px;
+    border-radius: 16px;
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 8px 32px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.related-card:hover, .popular-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.related-card i, .popular-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.related-card h4, .popular-card h4 {
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+.related-card p, .popular-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.related-card a, .popular-card a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.related-card a:hover, .popular-card a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--card-border);
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .article-header {
+        padding: 80px 20px 40px;
+    }
+
+    .article-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .article-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .article-content p {
+        font-size: 1.05rem;
+    }
+
+    .pull-quote {
+        font-size: 1.15rem;
+    }
+
+    .related-grid, .popular-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-button {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Hustle Income Calculator - Estimate Your Earnings</title>
+    <meta name="description" content="Calculate earnings from 30+ side hustles like Uber, Fiverr, DoorDash, and Airbnb with our free, tailored calculator. Estimate hourly, weekly, monthly, and yearly income accurately.">
+    <meta name="keywords" content="side hustle calculator, uber earnings calculator, fiverr income calculator, doordash profit calculator, twitch earnings estimator, airbnb income calculator, side hustle income">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Side Hustle Income Calculator">
+    <meta property="og:description" content="Estimate your income from Uber, Fiverr, Airbnb, and 30+ side hustles with detailed, platform-specific calculations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sidehustlecalculator.com">
+    <meta property="og:image" content="https://placehold.co/1200x630?text=SideHustleCalc">
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Side Hustle Income Calculator",
+        "description": "A free tool to calculate earnings from 30+ side hustles with platform-specific metrics.",
+        "applicationCategory": "FinancialCalculator",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "keywords": "side hustle calculator, uber earnings calculator, fiverr income calculator, doordash profit calculator, airbnb income estimator"
+    }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --background: #f8fafc;
+            --card: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --card-shadow: rgba(0, 0, 0, 0.05);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e2e8f0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .glass {
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 var(--card-shadow);
+        }
+
+        .navbar {
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(231, 235, 240, 0.8);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .nav-options {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-options a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-options a:hover {
+            color: var(--primary);
+        }
+
+        .currency-selector {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, var(--primary) 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .ad {
+            margin: 20px 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .ad-header {
+            height: 90px;
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+        }
+
+        .ad-content {
+            height: 250px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+        }
+
+        .calculator-container {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .calculator {
+            flex: 1 1 550px;
+            padding: 30px;
+        }
+
+        .results-panel {
+            flex: 1 1 350px;
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 20px 0 10px;
+            color: var(--text);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        select, input[type="number"], input[type="checkbox"] {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background-color: white;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .optional-field {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .button.secondary {
+            background: #e2e8f0;
+            color: var(--text);
+        }
+
+        .button.secondary:hover {
+            background: #d1d5db;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .result-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .result-card h4 {
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .tax-note {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fef3c7;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .tips-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ecfdf5;
+            border-radius: 8px;
+        }
+
+        .hustle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .hustle-card {
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .hustle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hustle-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .blog-section {
+            margin: 40px 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 15px;
+        }
+
+        .blog-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .faq-section {
+            margin: 60px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+        }
+
+        .faq-question {
+            padding: 16px 20px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.7);
+            margin-top: 60px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading i {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .calculator-container { flex-direction: column; }
+            .calculator, .results-panel { flex: 1 1 100%; }
+            .ad-content { height: 200px; }
+            select, input[type="number"], input[type="checkbox"] { font-size: 0.9rem; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-calculator"></i>
+                SideHustleCalc
+            </a>
+            <div class="nav-options">
+                <a href="index.html">Home</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="blogs.html">Blogs</a>
+                <select id="currency-selector" class="currency-selector" aria-label="Select Currency">
+                    <option value="USD" data-flag="🇺🇸">USD</option>
+                    <option value="EUR" data-flag="🇪🇺">EUR</option>
+                    <option value="GBP" data-flag="🇬🇧">GBP</option>
+                    <option value="CAD" data-flag="🇨🇦">CAD</option>
+                    <option value="AUD" data-flag="🇦🇺">AUD</option>
+                    <option value="JPY" data-flag="🇯🇵">JPY</option>
+                    <option value="INR" data-flag="🇮🇳">INR</option>
+                    <option value="BRL" data-flag="🇧🇷">BRL</option>
+                    <option value="ZAR" data-flag="🇿🇦">ZAR</option>
+                    <option value="CHF" data-flag="🇨🇭">CHF</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="ad ad-header">
+            <img src="https://placehold.co/728x90?text=Advertisement" alt="Advertisement" />
+        </div>
+
+        <header>
+            <h1 id="page-title">Side Hustle Income Calculator</h1>
+            <p class="subtitle">Estimate your earnings from 30+ side hustles like Uber, Fiverr, and Airbnb with accurate, tailored calculations. Free and easy to use!</p>
+        </header>
+
+        <div class="calculator-container">
+            <div class="calculator glass">
+                <h2>Calculate Your Earnings</h2>
+                <form id="calculator-form">
+                    <div class="form-group">
+                        <label for="hustle">Select Your Side Hustle:</label>
+                        <select id="hustle" name="hustle" required aria-label="Select Side Hustle">
+                            <option value="" disabled selected>Choose a side hustle</option>
+                            <optgroup label="Rideshare & Delivery">
+                                <option value="uber">Uber</option>
+                                <option value="lyft">Lyft</option>
+                                <option value="doordash">DoorDash</option>
+                                <option value="ubereats">Uber Eats</option>
+                                <option value="instacart">Instacart</option>
+                                <option value="shipt">Shipt</option>
+                                <option value="postmates">Postmates</option>
+                                <option value="amazonflex">Amazon Flex</option>
+                                <option value="doordashbike">DoorDash (Bike)</option>
+                            </optgroup>
+                            <optgroup label="Freelancing">
+                                <option value="fiverr">Fiverr</option>
+                                <option value="fiverrpro">Fiverr Pro</option>
+                                <option value="upwork">Upwork</option>
+                                <option value="taskrabbit">TaskRabbit</option>
+                                <option value="rev">Rev</option>
+                                <option value="usertesting">UserTesting</option>
+                            </optgroup>
+                            <optgroup label="Content Creation">
+                                <option value="youtube">YouTube</option>
+                                <option value="twitch">Twitch</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="podcasting">Podcasting</option>
+                                <option value="substack">Substack</option>
+                                <option value="patreon">Patreon</option>
+                                <option value="onlyfans">OnlyFans</option>
+                            </optgroup>
+                            <optgroup label="Marketplace">
+                                <option value="etsy">Etsy</option>
+                                <option value="etsyprintables">Etsy Printables</option>
+                                <option value="ebay">eBay</option>
+                                <option value="poshmark">Poshmark</option>
+                                <option value="depop">Depop</option>
+                                <option value="stockphotography">Stock Photography</option>
+                            </optgroup>
+                            <optgroup label="Property & Sharing">
+                                <option value="airbnb">Airbnb</option>
+                                <option value="turo">Turo</option>
+                                <option value="rover">Rover</option>
+                            </optgroup>
+                            <optgroup label="Teaching">
+                                <option value="vipkid">VIPKid</option>
+                                <option value="teachable">Teachable</option>
+                                <option value="tutoring">Online Tutoring</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option value="virtualassistant">Virtual Assistant</option>
+                                <option value="affiliatemarketing">Affiliate Marketing</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div id="dynamic-fields" class="dynamic-fields"></div>
+                    <div class="form-group">
+                        <label for="hours">Hours per Week:<span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Enter the number of hours you plan to work weekly (1-168).</span></span></label>
+                        <input type="number" id="hours" name="hours" min="1" max="168" placeholder="e.g., 20" aria-label="Hours per Week">
+                        <div id="hours-error" class="error">Please enter a value between 1 and 168.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenses">Weekly Expenses (Optional):<span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Include costs like gas, materials, or subscriptions.</span></span></label>
+                        <input type="number" id="expenses" name="expenses" min="0" placeholder="e.g., 50" aria-label="Weekly Expenses">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="button">Calculate Earnings</button>
+                        <button type="reset" class="button secondary">Reset</button>
+                    </div>
+                </form>
+                <div id="loading" class="loading">
+                    <i class="fas fa-spinner"></i> Calculating...
+                </div>
+            </div>
+
+            <div class="results-panel glass">
+                <div class="ad ad-header">
+                    <img src="https://placehold.co/300x90?text=Advertisement" alt="Advertisement" />
+                </div>
+                <h2>Your Earnings Estimate</h2>
+                <p id="calculator-explanation">Select a side hustle to see tailored calculations.</p>
+                <div id="results" class="results">
+                    <div class="result-card">
+                        <h4>Hourly Rate (Net)</h4>
+                        <div id="hourly" class="result-value number">$0</div>
+                    </div>
+                    <div class="result-card">
+                        <h4>Weekly Earnings</h4>
+                        <div id="weekly" class="result-value number">$0</div>
+                    </div>
+                    <div class="result-card">
+                        <h4>Monthly Earnings</h4>
+                        <div id="monthly" class="result-value number">$0</div>
+                    </div>
+                    <div class="result-card">
+                        <h4>Yearly Earnings</h4>
+                        <div id="yearly" class="result-value number">$0</div>
+                    </div>
+                    <div class="tax-note">
+                        <i class="fas fa-info-circle"></i> Estimates include platform fees and expenses. Taxes vary (20-30% typically). Consult a tax professional for specifics.
+                    </div>
+                    <div id="tips-section" class="tips-section">
+                        <h4>Tips to Maximize Earnings</h4>
+                        <ul id="tips-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad ad-content">
+            <img src="https://placehold.co/728x250?text=Advertisement" alt="Advertisement" />
+        </div>
+
+        <section class="hustle-details">
+            <h2>Top Side Hustles in 2025</h2>
+            <div class="hustle-grid">
+                <div class="hustle-card glass">
+                    <img src="https://placehold.co/280x150?text=Uber" alt="Uber" class="hustle-image">
+                    <h3>Uber Driver</h3>
+                    <p>Earn $15-30/hour driving passengers. <a href="/blog/uber.html">Learn more</a>.</p>
+                </div>
+                <div class="hustle-card glass">
+                    <img src="https://placehold.co/280x150?text=Uber+Eats" alt="Uber Eats" class="hustle-image">
+                    <h3>Uber Eats</h3>
+                    <p>Make $12-25/hour delivering food. <a href="/blog/ubereats.html">Learn more</a>.</p>
+                </div>
+                <div class="hustle-card glass">
+                    <img src="https://placehold.co/280x150?text=Fiverr" alt="Fiverr" class="hustle-image">
+                    <h3>Fiverr Freelancer</h3>
+                    <p>Earn $20-100/hour on projects. <a href="/blog/fiverr.html">Learn more</a>.</p>
+                </div>
+                <div class="hustle-card glass">
+                    <img src="https://placehold.co/280x150?text=Twitch" alt="Twitch" class="hustle-image">
+                    <h3>Twitch Streaming</h3>
+                    <p>Monetize your gaming passion. <a href="/blog/twitch.html">Learn more</a>.</p>
+                </div>
+                <div class="hustle-card glass">
+                    <img src="https://placehold.co/280x150?text=Etsy" alt="Etsy" class="hustle-image">
+                    <h3>Etsy Shop</h3>
+                    <p>Sell crafts with 20-70% margins. <a href="/blog/etsy.html">Learn more</a>.</p>
+                </div>
+                <div class="hustle-card glass">
+                    <img src="https://placehold.co/280x150?text=Affiliate+Marketing" alt="Affiliate Marketing" class="hustle-image">
+                    <h3>Affiliate Marketing</h3>
+                    <p>Earn commissions online. <a href="/blog/affiliatemarketing.html">Learn more</a>.</p>
+                </div>
+                <div class="hustle-card glass">
+                    <img src="https://placehold.co/280x150?text=Substack" alt="Substack" class="hustle-image">
+                    <h3>Substack</h3>
+                    <p>Monetize newsletters as a writer. <a href="/blog/substack.html">Learn more</a>.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="blog-section">
+      <h2>Featured Articles</h2>
+      <div class="blog-grid">
+          <div class="blog-card">
+              <img src="https://placehold.co/280x150?text=Uber+Guide" alt="Uber Guide">
+              <div class="blog-card-content">
+                  <h4><a href="/blog/uber.html">How to Maximize Uber Earnings</a></h4>
+                  <p>Tips to boost your income as an Uber driver in 2025.</p>
+              </div>
+          </div>
+          <div class="blog-card">
+              <img src="https://placehold.co/280x150?text=Fiverr+Guide" alt="Fiverr Guide">
+              <div class="blog-card-content">
+                  <h4><a href="/blog/fiverr.html">Starting a Fiverr Side Hustle</a></h4>
+                  <p>Learn how to land high-paying gigs on Fiverr.</p>
+              </div>
+          </div>
+          <div class="blog-card">
+              <img src="https://placehold.co/280x150?text=Twitch+Guide" alt="Twitch Guide">
+              <div class="blog-card-content">
+                  <h4><a href="/blog/twitch.html">Monetizing Your Twitch Stream</a></h4>
+                  <p>Strategies to earn from streaming in 2025.</p>
+              </div>
+          </div>
+          <div class="blog-card">
+              <img src="https://placehold.co/280x150?text=Affiliate+Marketing+Guide" alt="Affiliate Marketing Guide">
+              <div class="blog-card-content">
+                  <h4><a href="/blog/affiliatemarketing.html">How to Start Affiliate Marketing in 2025</a></h4>
+                  <p>Launch an affiliate marketing side hustle with proven strategies.</p>
+              </div>
+          </div>
+          <div class="blog-card">
+              <img src="https://placehold.co/280x150?text=Substack+Guide" alt="Substack Guide">
+              <div class="blog-card-content">
+                  <h4><a href="/blog/substack.html">How to Make Money with Substack in 2025</a></h4>
+                  <p>Turn your Substack newsletter into a profitable side hustle.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    How accurate is this calculator?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Our calculator uses platform-specific data, fees, and 2025 market trends. Accuracy depends on your inputs, including expenses and work volume.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Does it account for taxes?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Estimates are pre-tax but include platform fees and expenses. Set aside 20-30% for taxes, depending on your location.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I calculate multiple hustles?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Run calculations for each hustle separately and sum the results for a combined estimate.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 SideHustleCalc. All rights reserved. Updated with 2025 rates.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hustles = {
+            uber: {
+                name: "Uber",
+                icon: "fa-car",
+                fees: 0.25,
+                tips: ["Work during peak hours (evenings, weekends).", "Drive in high-demand areas.", "Maintain a high rating."],
+                fields: [
+                    {id: "city-type", label: "City Size", type: "select", required: true, options: [
+                        {value: "major", text: "Major City", rates: {base: 2.55, perMin: 0.35, perMile: 1.35, minFare: 5.00, bookingFee: 2.75}},
+                        {value: "medium", text: "Medium City", rates: {base: 2.00, perMin: 0.30, perMile: 1.20, minFare: 4.00, bookingFee: 2.50}},
+                        {value: "small", text: "Small City", rates: {base: 1.50, perMin: 0.25, perMile: 1.00, minFare: 3.00, bookingFee: 2.00}}
+                    ]},
+                    {id: "vehicle-type", label: "Vehicle Type", type: "select", required: true, options: [
+                        {value: "uberx", text: "UberX", multiplier: 1.0},
+                        {value: "uberxl", text: "UberXL", multiplier: 1.4},
+                        {value: "uberblack", text: "Uber Black", multiplier: 1.8}
+                    ]},
+                    {id: "trip-time", label: "Avg Trip Time (min)", type: "number", min: 1, max: 60, default: 10, required: true},
+                    {id: "trip-distance", label: "Avg Trip Distance (miles)", type: "number", min: 1, max: 50, default: 5, required: true},
+                    {id: "surge", label: "Avg Surge Multiplier", type: "number", min: 1.0, max: 5.0, default: 1.2, optional: true},
+                    {id: "tips", label: "Avg Tip per Ride", type: "number", min: 0, max: 10, default: 2.5, optional: true},
+                    {id: "trips-week", label: "Trips per Week", type: "number", min: 1, max: 1000, default: 50, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const cityRates = this.getOptionRates("city-type", inputs["city-type"]);
+                    const vehicleMultiplier = this.getOptionMultiplier("vehicle-type", inputs["vehicle-type"]);
+                    const tripTime = parseFloat(inputs["trip-time"]) || 10;
+                    const tripDistance = parseFloat(inputs["trip-distance"]) || 5;
+                    const surge = inputs["surge"] ? parseFloat(inputs["surge"]) : 1.0;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+                    const tripsWeek = parseFloat(inputs["trips-week"]) || 50;
+
+                    let fare = cityRates.base + (cityRates.perMin * tripTime) + (cityRates.perMile * tripDistance) + cityRates.bookingFee;
+                    if (fare < cityRates.minFare) fare = cityRates.minFare;
+                    let totalFare = fare * surge * vehicleMultiplier;
+                    let netFare = totalFare * (1 - this.fees) + tips;
+                    let weekly = (netFare * tripsWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netFare * tripsWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionRates: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.rates || {base: 2.00, perMin: 0.30, perMile: 1.20, minFare: 4.00, bookingFee: 2.50};
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            lyft: {
+                name: "Lyft",
+                icon: "fa-car",
+                fees: 0.25,
+                tips: ["Focus on peak times.", "Offer great service for tips.", "Use Lyft’s driver app for bonuses."],
+                fields: [
+                    {id: "city-type", label: "City Size", type: "select", required: true, options: [
+                        {value: "major", text: "Major City", rates: {base: 2.50, perMin: 0.34, perMile: 1.30, minFare: 4.80, bookingFee: 2.65}},
+                        {value: "medium", text: "Medium City", rates: {base: 1.95, perMin: 0.29, perMile: 1.15, minFare: 3.80, bookingFee: 2.40}},
+                        {value: "small", text: "Small City", rates: {base: 1.45, perMin: 0.24, perMile: 0.95, minFare: 2.80, bookingFee: 1.90}}
+                    ]},
+                    {id: "ride-type", label: "Ride Type", type: "select", required: true, options: [
+                        {value: "standard", text: "Standard", multiplier: 1.0},
+                        {value: "xl", text: "Lyft XL", multiplier: 1.5}
+                    ]},
+                    {id: "trip-time", label: "Avg Trip Time (min)", type: "number", min: 1, max: 60, default: 10, required: true},
+                    {id: "trip-distance", label: "Avg Trip Distance (miles)", type: "number", min: 1, max: 50, default: 5, required: true},
+                    {id: "surge", label: "Avg Surge Multiplier", type: "number", min: 1.0, max: 5.0, default: 1.2, optional: true},
+                    {id: "tips", label: "Avg Tip per Ride", type: "number", min: 0, max: 10, default: 2.5, optional: true},
+                    {id: "trips-week", label: "Trips per Week", type: "number", min: 1, max: 1000, default: 50, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const cityRates = this.getOptionRates("city-type", inputs["city-type"]);
+                    const rideMultiplier = this.getOptionMultiplier("ride-type", inputs["ride-type"]);
+                    const tripTime = parseFloat(inputs["trip-time"]) || 10;
+                    const tripDistance = parseFloat(inputs["trip-distance"]) || 5;
+                    const surge = inputs["surge"] ? parseFloat(inputs["surge"]) : 1.0;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+                    const tripsWeek = parseFloat(inputs["trips-week"]) || 50;
+
+                    let fare = cityRates.base + (cityRates.perMin * tripTime) + (cityRates.perMile * tripDistance) + cityRates.bookingFee;
+                    if (fare < cityRates.minFare) fare = cityRates.minFare;
+                    let totalFare = fare * surge * rideMultiplier;
+                    let netFare = totalFare * (1 - this.fees) + tips;
+                    let weekly = (netFare * tripsWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netFare * tripsWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionRates: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.rates || {base: 1.95, perMin: 0.29, perMile: 1.15, minFare: 3.80, bookingFee: 2.40};
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            doordash: {
+                name: "DoorDash",
+                icon: "fa-utensils",
+                fees: 0.15,
+                tips: ["Work dinner shifts.", "Choose busy areas.", "Accept high-value orders."],
+                fields: [
+                    {id: "market-density", label: "Market Density", type: "select", required: true, options: [
+                        {value: "urban", text: "Urban", multiplier: 1.2},
+                        {value: "suburban", text: "Suburban", multiplier: 1.0},
+                        {value: "rural", text: "Rural", multiplier: 0.8}
+                    ]},
+                    {id: "deliveries-week", label: "Deliveries per Week", type: "number", min: 1, max: 500, default: 40, required: true},
+                    {id: "avg-delivery-pay", label: "Avg Pay per Delivery", type: "number", min: 2, max: 20, default: 6, required: true},
+                    {id: "tips", label: "Avg Tip per Delivery", type: "number", min: 0, max: 10, default: 3, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const marketMultiplier = this.getOptionMultiplier("market-density", inputs["market-density"]);
+                    const deliveriesWeek = parseFloat(inputs["deliveries-week"]) || 40;
+                    const avgDeliveryPay = parseFloat(inputs["avg-delivery-pay"]) || 6;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netDeliveryPay = (avgDeliveryPay * marketMultiplier * (1 - this.fees)) + tips;
+                    let weekly = (netDeliveryPay * deliveriesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netDeliveryPay * deliveriesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            ubereats: {
+                name: "Uber Eats",
+                icon: "fa-hamburger",
+                fees: 0.25,
+                tips: ["Deliver during meal times.", "Use a bike in urban areas.", "Accept stacked orders."],
+                fields: [
+                    {id: "market-density", label: "Market Density", type: "select", required: true, options: [
+                        {value: "urban", text: "Urban", multiplier: 1.2},
+                        {value: "suburban", text: "Suburban", multiplier: 1.0},
+                        {value: "rural", text: "Rural", multiplier: 0.8}
+                    ]},
+                    {id: "deliveries-week", label: "Deliveries per Week", type: "number", min: 1, max: 500, default: 40, required: true},
+                    {id: "avg-delivery-pay", label: "Avg Pay per Delivery", type: "number", min: 2, max: 20, default: 5, required: true},
+                    {id: "tips", label: "Avg Tip per Delivery", type: "number", min: 0, max: 10, default: 3, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const marketMultiplier = this.getOptionMultiplier("market-density", inputs["market-density"]);
+                    const deliveriesWeek = parseFloat(inputs["deliveries-week"]) || 40;
+                    const avgDeliveryPay = parseFloat(inputs["avg-delivery-pay"]) || 5;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netDeliveryPay = (avgDeliveryPay * marketMultiplier * (1 - this.fees)) + tips;
+                    let weekly = (netDeliveryPay * deliveriesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netDeliveryPay * deliveriesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            instacart: {
+                name: "Instacart",
+                icon: "fa-shopping-cart",
+                fees: 0.2,
+                tips: ["Shop efficiently.", "Target large orders.", "Communicate with customers."],
+                fields: [
+                    {id: "market-type", label: "Market Type", type: "select", required: true, options: [
+                        {value: "urban", text: "Urban", multiplier: 1.2},
+                        {value: "suburban", text: "Suburban", multiplier: 1.0}
+                    ]},
+                    {id: "batches-week", label: "Batches per Week", type: "number", min: 1, max: 100, default: 20, required: true},
+                    {id: "avg-batch-pay", label: "Avg Pay per Batch", type: "number", min: 5, max: 50, default: 15, required: true},
+                    {id: "tips", label: "Avg Tip per Batch", type: "number", min: 0, max: 20, default: 5, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const marketMultiplier = this.getOptionMultiplier("market-type", inputs["market-type"]);
+                    const batchesWeek = parseFloat(inputs["batches-week"]) || 20;
+                    const avgBatchPay = parseFloat(inputs["avg-batch-pay"]) || 15;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netBatchPay = (avgBatchPay * marketMultiplier * (1 - this.fees)) + tips;
+                    let weekly = (netBatchPay * batchesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netBatchPay * batchesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            shipt: {
+                name: "Shipt",
+                icon: "fa-shopping-basket",
+                fees: 0.2,
+                tips: ["Be punctual.", "Communicate with clients.", "Focus on high-tip areas."],
+                fields: [
+                    {id: "market-type", label: "Market Type", type: "select", required: true, options: [
+                        {value: "urban", text: "Urban", multiplier: 1.2},
+                        {value: "suburban", text: "Suburban", multiplier: 1.0}
+                    ]},
+                    {id: "orders-week", label: "Orders per Week", type: "number", min: 1, max: 100, default: 20, required: true},
+                    {id: "avg-order-pay", label: "Avg Pay per Order", type: "number", min: 5, max: 50, default: 12, required: true},
+                    {id: "tips", label: "Avg Tip per Order", type: "number", min: 0, max: 20, default: 5, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const marketMultiplier = this.getOptionMultiplier("market-type", inputs["market-type"]);
+                    const ordersWeek = parseFloat(inputs["orders-week"]) || 20;
+                    const avgOrderPay = parseFloat(inputs["avg-order-pay"]) || 12;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netOrderPay = (avgOrderPay * marketMultiplier * (1 - this.fees)) + tips;
+                    let weekly = (netOrderPay * ordersWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netOrderPay * ordersWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            postmates: {
+                name: "Postmates",
+                icon: "fa-box",
+                fees: 0.2,
+                tips: ["Work weekends.", "Accept quick deliveries.", "Target busy restaurants."],
+                fields: [
+                    {id: "market-density", label: "Market Density", type: "select", required: true, options: [
+                        {value: "urban", text: "Urban", multiplier: 1.2},
+                        {value: "suburban", text: "Suburban", multiplier: 1.0}
+                    ]},
+                    {id: "deliveries-week", label: "Deliveries per Week", type: "number", min: 1, max: 500, default: 40, required: true},
+                    {id: "avg-delivery-pay", label: "Avg Pay per Delivery", type: "number", min: 2, max: 20, default: 5, required: true},
+                    {id: "tips", label: "Avg Tip per Delivery", type: "number", min: 0, max: 10, default: 3, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const marketMultiplier = this.getOptionMultiplier("market-density", inputs["market-density"]);
+                    const deliveriesWeek = parseFloat(inputs["deliveries-week"]) || 40;
+                    const avgDeliveryPay = parseFloat(inputs["avg-delivery-pay"]) || 5;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netDeliveryPay = (avgDeliveryPay * marketMultiplier * (1 - this.fees)) + tips;
+                    let weekly = (netDeliveryPay * deliveriesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netDeliveryPay * deliveriesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            amazonflex: {
+                name: "Amazon Flex",
+                icon: "fa-truck",
+                fees: 0.0,
+                tips: ["Choose high-paying blocks.", "Plan efficient routes.", "Work during peak seasons."],
+                fields: [
+                    {id: "block-type", label: "Block Type", type: "select", required: true, options: [
+                        {value: "standard", text: "Standard", rate: 20},
+                        {value: "prime", text: "Prime Now", rate: 25}
+                    ]},
+                    {id: "blocks-week", label: "Blocks per Week", type: "number", min: 1, max: 50, default: 10, required: true},
+                    {id: "hours-per-block", label: "Hours per Block", type: "number", min: 1, max: 8, default: 4, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const blockRate = this.getOptionRate("block-type", inputs["block-type"]);
+                    const blocksWeek = parseFloat(inputs["blocks-week"]) || 10;
+                    const hoursPerBlock = parseFloat(inputs["hours-per-block"]) || 4;
+
+                    let weekly = (blockRate * blocksWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((blockRate * blocksWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionRate: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.rate || 20;
+                }
+            },
+            doordashbike: {
+                name: "DoorDash (Bike)",
+                icon: "fa-bicycle",
+                fees: 0.15,
+                tips: ["Stick to urban areas.", "Avoid bad weather.", "Optimize delivery routes."],
+                fields: [
+                    {id: "market-density", label: "Market Density", type: "select", required: true, options: [
+                        {value: "urban", text: "Urban", multiplier: 1.2},
+                        {value: "suburban", text: "Suburban", multiplier: 1.0}
+                    ]},
+                    {id: "deliveries-week", label: "Deliveries per Week", type: "number", min: 1, max: 500, default: 40, required: true},
+                    {id: "avg-delivery-pay", label: "Avg Pay per Delivery", type: "number", min: 2, max: 20, default: 5, required: true},
+                    {id: "tips", label: "Avg Tip per Delivery", type: "number", min: 0, max: 10, default: 3, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const marketMultiplier = this.getOptionMultiplier("market-density", inputs["market-density"]);
+                    const deliveriesWeek = parseFloat(inputs["deliveries-week"]) || 40;
+                    const avgDeliveryPay = parseFloat(inputs["avg-delivery-pay"]) || 5;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netDeliveryPay = (avgDeliveryPay * marketMultiplier * (1 - this.fees)) + tips;
+                    let weekly = (netDeliveryPay * deliveriesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netDeliveryPay * deliveriesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            fiverr: {
+                name: "Fiverr",
+                icon: "fa-laptop-code",
+                fees: 0.2,
+                tips: ["Optimize gig descriptions.", "Offer extras.", "Respond quickly."],
+                fields: [
+                    {id: "gig-category", label: "Gig Category", type: "select", required: true, options: [
+                        {value: "writing", text: "Writing", multiplier: 0.8},
+                        {value: "design", text: "Design", multiplier: 1.0},
+                        {value: "programming", text: "Programming", multiplier: 1.2}
+                    ]},
+                    {id: "experience", label: "Experience Level", type: "select", required: true, options: [
+                        {value: "beginner", text: "Beginner", multiplier: 0.7},
+                        {value: "expert", text: "Expert", multiplier: 1.3}
+                    ]},
+                    {id: "orders-week", label: "Orders per Week", type: "number", min: 1, max: 50, default: 5, required: true},
+                    {id: "avg-order-value", label: "Avg Order Value", type: "number", min: 5, max: 1000, default: 50, required: true},
+                    {id: "extras", label: "Avg Extras per Order", type: "number", min: 0, max: 500, default: 10, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const categoryMultiplier = this.getOptionMultiplier("gig-category", inputs["gig-category"]);
+                    const experienceMultiplier = this.getOptionMultiplier("experience", inputs["experience"]);
+                    const ordersWeek = parseFloat(inputs["orders-week"]) || 5;
+                    const avgOrderValue = parseFloat(inputs["avg-order-value"]) || 50;
+                    const extras = inputs["extras"] ? parseFloat(inputs["extras"]) : 0;
+
+                    let netOrderPay = ((avgOrderValue + extras) * categoryMultiplier * experienceMultiplier * (1 - this.fees));
+                    let weekly = (netOrderPay * ordersWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netOrderPay * ordersWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            fiverrpro: {
+                name: "Fiverr Pro",
+                icon: "fa-crown",
+                fees: 0.2,
+                tips: ["Highlight expertise.", "Charge premium rates.", "Build a strong portfolio."],
+                fields: [
+                    {id: "gig-category", label: "Gig Category", type: "select", required: true, options: [
+                        {value: "writing", text: "Writing", multiplier: 0.8},
+                        {value: "design", text: "Design", multiplier: 1.0},
+                        {value: "programming", text: "Programming", multiplier: 1.2}
+                    ]},
+                    {id: "orders-week", label: "Orders per Week", type: "number", min: 1, max: 50, default: 5, required: true},
+                    {id: "avg-order-value", label: "Avg Order Value", type: "number", min: 50, max: 5000, default: 200, required: true},
+                    {id: "extras", label: "Avg Extras per Order", type: "number", min: 0, max: 1000, default: 50, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const categoryMultiplier = this.getOptionMultiplier("gig-category", inputs["gig-category"]);
+                    const ordersWeek = parseFloat(inputs["orders-week"]) || 5;
+                    const avgOrderValue = parseFloat(inputs["avg-order-value"]) || 200;
+                    const extras = inputs["extras"] ? parseFloat(inputs["extras"]) : 0;
+
+                    let netOrderPay = ((avgOrderValue + extras) * categoryMultiplier * (1 - this.fees));
+                    let weekly = (netOrderPay * ordersWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netOrderPay * ordersWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            upwork: {
+                name: "Upwork",
+                icon: "fa-briefcase",
+                fees: 0.2,
+                tips: ["Write strong proposals.", "Build a portfolio.", "Negotiate rates."],
+                fields: [
+                    {id: "category", label: "Category", type: "select", required: true, options: [
+                        {value: "writing", text: "Writing", multiplier: 0.8},
+                        {value: "design", text: "Design", multiplier: 1.0},
+                        {value: "development", text: "Development", multiplier: 1.2}
+                    ]},
+                    {id: "hourly-rate", label: "Hourly Rate", type: "number", min: 5, max: 200, default: 30, required: true},
+                    {id: "hours-week", label: "Hours per Week", type: "number", min: 1, max: 80, default: 20, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const categoryMultiplier = this.getOptionMultiplier("category", inputs["category"]);
+                    const hourlyRate = parseFloat(inputs["hourly-rate"]) || 30;
+                    const hoursWeek = parseFloat(inputs["hours-week"]) || 20;
+
+                    let netHourly = hourlyRate * categoryMultiplier * (1 - this.fees);
+                    let weekly = (netHourly * hoursWeek - expenses) / rate;
+
+                    return {
+                        hourly: formatMoney(netHourly / rate, currencySymbol),
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            taskrabbit: {
+                name: "TaskRabbit",
+                icon: "fa-tools",
+                fees: 0.15,
+                tips: ["Be reliable.", "Offer multiple skills.", "Get positive reviews."],
+                fields: [
+                    {id: "task-type", label: "Task Type", type: "select", required: true, options: [
+                        {value: "handyman", text: "Handyman", multiplier: 1.2},
+                        {value: "cleaning", text: "Cleaning", multiplier: 1.0},
+                        {value: "moving", text: "Moving", multiplier: 1.3}
+                    ]},
+                    {id: "hourly-rate", label: "Hourly Rate", type: "number", min: 10, max: 100, default: 25, required: true},
+                    {id: "hours-week", label: "Hours per Week", type: "number", min: 1, max: 80, default: 20, required: true},
+                    {id: "tips", label: "Avg Tips per Task", type: "number", min: 0, max: 50, default: 5, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const taskMultiplier = this.getOptionMultiplier("task-type", inputs["task-type"]);
+                    const hourlyRate = parseFloat(inputs["hourly-rate"]) || 25;
+                    const hoursWeek = parseFloat(inputs["hours-week"]) || 20;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netHourly = (hourlyRate * taskMultiplier * (1 - this.fees)) + (tips / hoursWeek);
+                    let weekly = (netHourly * hoursWeek - expenses) / rate;
+
+                    return {
+                        hourly: formatMoney(netHourly / rate, currencySymbol),
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            rev: {
+                name: "Rev",
+                icon: "fa-headphones",
+                fees: 0.0,
+                tips: ["Improve typing speed.", "Choose high-paying jobs.", "Work on complex files."],
+                fields: [
+                    {id: "job-type", label: "Job Type", type: "select", required: true, options: [
+                        {value: "transcription", text: "Transcription", rate: 0.8},
+                        {value: "captioning", text: "Captioning", rate: 1.2}
+                    ]},
+                    {id: "minutes-week", label: "Minutes per Week", type: "number", min: 1, max: 1000, default: 100, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const jobRate = this.getOptionRate("job-type", inputs["job-type"]);
+                    const minutesWeek = parseFloat(inputs["minutes-week"]) || 100;
+
+                    let weekly = (jobRate * minutesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((jobRate * minutesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionRate: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.rate || 0.8;
+                }
+            },
+            usertesting: {
+                name: "UserTesting",
+                icon: "fa-bug",
+                fees: 0.0,
+                tips: ["Complete tests quickly.", "Provide detailed feedback.", "Apply for specialized tests."],
+                fields: [
+                    {id: "tests-week", label: "Tests per Week", type: "number", min: 1, max: 50, default: 5, required: true},
+                    {id: "avg-test-pay", label: "Avg Pay per Test", type: "number", min: 5, max: 50, default: 10, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const testsWeek = parseFloat(inputs["tests-week"]) || 5;
+                    const avgTestPay = parseFloat(inputs["avg-test-pay"]) || 10;
+
+                    let weekly = (avgTestPay * testsWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((avgTestPay * testsWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            youtube: {
+                name: "YouTube",
+                icon: "fa-video",
+                fees: 0.45,
+                tips: ["Post regularly.", "Optimize thumbnails.", "Engage with comments."],
+                fields: [
+                    {id: "views-month", label: "Monthly Views", type: "number", min: 1000, max: 10000000, default: 10000, required: true},
+                    {id: "cpm", label: "CPM ($ per 1000 views)", type: "number", min: 0.5, max: 20, default: 5, required: true},
+                    {id: "sponsorships", label: "Sponsorship Income", type: "number", min: 0, max: 10000, default: 0, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const viewsMonth = parseFloat(inputs["views-month"]) || 10000;
+                    const cpm = parseFloat(inputs["cpm"]) || 5;
+                    const sponsorships = inputs["sponsorships"] ? parseFloat(inputs["sponsorships"]) : 0;
+
+                    let monthly = ((viewsMonth / 1000 * cpm * (1 - this.fees)) + sponsorships - expenses) / rate;
+                    let weekly = monthly / 4.33;
+
+                    return {
+                        hourly: hours ? formatMoney((monthly / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(monthly, currencySymbol),
+                        yearly: formatMoney(monthly * 12, currencySymbol)
+                    };
+                }
+            },
+            twitch: {
+                name: "Twitch",
+                icon: "fa-video",
+                fees: 0.5,
+                tips: ["Stream consistently.", "Engage viewers.", "Diversify with sponsorships."],
+                fields: [
+                    {id: "subscribers", label: "Paid Subscribers", type: "number", min: 0, max: 100000, default: 25, required: true},
+                    {id: "avg-viewers", label: "Avg Viewers", type: "number", min: 0, max: 10000, default: 50, required: true},
+                    {id: "bits", label: "Avg Bits per Stream", type: "number", min: 0, max: 10000, default: 100, optional: true},
+                    {id: "streams-week", label: "Streams per Week", type: "number", min: 1, max: 20, default: 5, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const subscribers = parseFloat(inputs["subscribers"]) || 25;
+                    const avgViewers = parseFloat(inputs["avg-viewers"]) || 50;
+                    const bits = inputs["bits"] ? parseFloat(inputs["bits"]) : 0;
+                    const streamsWeek = parseFloat(inputs["streams-week"]) || 5;
+
+                    let weekly = ((subscribers * 2.5 * (1 - this.fees)) + (avgViewers * 0.01 * streamsWeek) + (bits * 0.01 * streamsWeek) - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney(weekly / hours / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            tiktok: {
+                name: "TikTok",
+                icon: "fa-music",
+                fees: 0.5,
+                tips: ["Follow trends.", "Engage followers.", "Use hashtags."],
+                fields: [
+                    {id: "views-month", label: "Monthly Views", type: "number", min: 1000, max: 10000000, default: 10000, required: true},
+                    {id: "cpm", label: "CPM ($ per 1000 views)", type: "number", min: 0.02, max: 0.1, default: 0.04, required: true},
+                    {id: "sponsorships", label: "Sponsorship Income", type: "number", min: 0, max: 10000, default: 0, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const viewsMonth = parseFloat(inputs["views-month"]) || 10000;
+                    const cpm = parseFloat(inputs["cpm"]) || 0.04;
+                    const sponsorships = inputs["sponsorships"] ? parseFloat(inputs["sponsorships"]) : 0;
+
+                    let monthly = ((viewsMonth / 1000 * cpm * (1 - this.fees)) + sponsorships - expenses) / rate;
+                    let weekly = monthly / 4.33;
+
+                    return {
+                        hourly: hours ? formatMoney((monthly / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(monthly, currencySymbol),
+                        yearly: formatMoney(monthly * 12, currencySymbol)
+                    };
+                }
+            },
+            instagram: {
+                name: "Instagram",
+                icon: "fa-camera",
+                fees: 0.0,
+                tips: ["Use hashtags.", "Post stories.", "Collaborate with brands."],
+                fields: [
+                    {id: "followers", label: "Followers", type: "number", min: 1000, max: 10000000, default: 10000, required: true},
+                    {id: "sponsorships", label: "Sponsorship Income per Post", type: "number", min: 0, max: 10000, default: 100, required: true},
+                    {id: "posts-week", label: "Posts per Week", type: "number", min: 1, max: 20, default: 3, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const followers = parseFloat(inputs["followers"]) || 10000;
+                    const sponsorships = parseFloat(inputs["sponsorships"]) || 100;
+                    const postsWeek = parseFloat(inputs["posts-week"]) || 3;
+
+                    let weekly = ((sponsorships * (followers / 10000) * postsWeek) - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney(weekly / hours / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            podcasting: {
+                name: "Podcasting",
+                icon: "fa-podcast",
+                fees: 0.0,
+                tips: ["Find sponsors.", "Promote episodes.", "Engage listeners."],
+                fields: [
+                    {id: "downloads-month", label: "Monthly Downloads", type: "number", min: 100, max: 1000000, default: 1000, required: true},
+                    {id: "cpm", label: "CPM ($ per 1000 downloads)", type: "number", min: 5, max: 50, default: 20, required: true},
+                    {id: "sponsorships", label: "Sponsorship Income", type: "number", min: 0, max: 10000, default: 0, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const downloadsMonth = parseFloat(inputs["downloads-month"]) || 1000;
+                    const cpm = parseFloat(inputs["cpm"]) || 20;
+                    const sponsorships = inputs["sponsorships"] ? parseFloat(inputs["sponsorships"]) : 0;
+
+                    let monthly = ((downloadsMonth / 1000 * cpm) + sponsorships - expenses) / rate;
+                    let weekly = monthly / 4.33;
+
+                    return {
+                        hourly: hours ? formatMoney((monthly / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(monthly, currencySymbol),
+                        yearly: formatMoney(monthly * 12, currencySymbol)
+                    };
+                }
+            },
+            substack: {
+                name: "Substack",
+                icon: "fa-newspaper",
+                fees: 0.1, // Substack takes 10% of subscription revenue
+                tips: ["Write consistently.", "Offer paid tiers.", "Promote on social media."],
+                fields: [
+                    {id: "subscribers", label: "Paid Subscribers", type: "number", min: 0, max: 10000, default: 50, required: true},
+                    {id: "subscription-fee", label: "Monthly Subscription Fee", type: "number", min: 1, max: 50, default: 5, required: true},
+                    {id: "sponsorships", label: "Sponsorship Income per Month", type: "number", min: 0, max: 5000, default: 0, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const subscribers = parseFloat(inputs["subscribers"]) || 50;
+                    const subscriptionFee = parseFloat(inputs["subscription-fee"]) || 5;
+                    const sponsorships = inputs["sponsorships"] ? parseFloat(inputs["sponsorships"]) : 0;
+
+                    let monthly = ((subscribers * subscriptionFee * (1 - this.fees)) + sponsorships - expenses) / rate;
+                    let weekly = monthly / 4.33;
+
+                    return {
+                        hourly: hours ? formatMoney(monthly / hours / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(monthly, currencySymbol),
+                        yearly: formatMoney(monthly * 12, currencySymbol)
+                    };
+                }
+            },
+            patreon: {
+                name: "Patreon",
+                icon: "fa-heart",
+                fees: 0.08, // Patreon Lite plan: 8% fee
+                tips: ["Offer exclusive content.", "Engage patrons.", "Set tiered rewards."],
+                fields: [
+                    {id: "patrons", label: "Number of Patrons", type: "number", min: 0, max: 10000, default: 50, required: true},
+                    {id: "avg-pledge", label: "Avg Pledge per Patron", type: "number", min: 1, max: 100, default: 5, required: true},
+                    {id: "extras", label: "Additional Income (e.g., Merch)", type: "number", min: 0, max: 5000, default: 0, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const patrons = parseFloat(inputs["patrons"]) || 50;
+                    const avgPledge = parseFloat(inputs["avg-pledge"]) || 5;
+                    const extras = inputs["extras"] ? parseFloat(inputs["extras"]) : 0;
+
+                    let monthly = ((patrons * avgPledge * (1 - this.fees)) + extras - expenses) / rate;
+                    let weekly = monthly / 4.33;
+
+                    return {
+                        hourly: hours ? formatMoney(monthly / hours / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(monthly, currencySymbol),
+                        yearly: formatMoney(monthly * 12, currencySymbol)
+                    };
+                }
+            },
+            onlyfans: {
+                name: "OnlyFans",
+                icon: "fa-users",
+                fees: 0.2, // OnlyFans takes 20% of earnings
+                tips: ["Post daily.", "Interact with fans.", "Offer exclusive content."],
+                fields: [
+                    {id: "subscribers", label: "Paid Subscribers", type: "number", min: 0, max: 10000, default: 50, required: true},
+                    {id: "subscription-fee", label: "Monthly Subscription Fee", type: "number", min: 4.99, max: 49.99, default: 9.99, required: true},
+                    {id: "tips", label: "Avg Tips per Month", type: "number", min: 0, max: 10000, default: 50, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const subscribers = parseFloat(inputs["subscribers"]) || 50;
+                    const subscriptionFee = parseFloat(inputs["subscription-fee"]) || 9.99;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let monthly = ((subscribers * subscriptionFee * (1 - this.fees)) + tips - expenses) / rate;
+                    let weekly = monthly / 4.33;
+
+                    return {
+                        hourly: hours ? formatMoney(monthly / hours / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(monthly, currencySymbol),
+                        yearly: formatMoney(monthly * 12, currencySymbol)
+                    };
+                }
+            },
+            etsy: {
+                name: "Etsy",
+                icon: "fa-store",
+                fees: 0.2, // 20% transaction fee + listing fees approximated
+                tips: ["Use high-quality photos.", "Price competitively.", "Promote on social media."],
+                fields: [
+                    {id: "product-type", label: "Product Type", type: "select", required: true, options: [
+                        {value: "handmade", text: "Handmade", multiplier: 0.8},
+                        {value: "vintage", text: "Vintage", multiplier: 1.0},
+                        {value: "craft-supplies", text: "Craft Supplies", multiplier: 0.9}
+                    ]},
+                    {id: "sales-week", label: "Sales per Week", type: "number", min: 1, max: 500, default: 10, required: true},
+                    {id: "avg-sale-price", label: "Avg Sale Price", type: "number", min: 1, max: 500, default: 20, required: true},
+                    {id: "material-cost", label: "Avg Material Cost per Sale", type: "number", min: 0, max: 100, default: 5, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const productMultiplier = this.getOptionMultiplier("product-type", inputs["product-type"]);
+                    const salesWeek = parseFloat(inputs["sales-week"]) || 10;
+                    const avgSalePrice = parseFloat(inputs["avg-sale-price"]) || 20;
+                    const materialCost = inputs["material-cost"] ? parseFloat(inputs["material-cost"]) : 0;
+
+                    let netSale = (avgSalePrice * productMultiplier * (1 - this.fees)) - materialCost;
+                    let weekly = (netSale * salesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netSale * salesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            etsyprintables: {
+                name: "Etsy Printables",
+                icon: "fa-file-pdf",
+                fees: 0.2, // Same as Etsy
+                tips: ["Create trendy designs.", "List frequently.", "Optimize listings."],
+                fields: [
+                    {id: "sales-week", label: "Sales per Week", type: "number", min: 1, max: 500, default: 20, required: true},
+                    {id: "avg-sale-price", label: "Avg Sale Price", type: "number", min: 1, max: 50, default: 5, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const salesWeek = parseFloat(inputs["sales-week"]) || 20;
+                    const avgSalePrice = parseFloat(inputs["avg-sale-price"]) || 5;
+
+                    let netSale = avgSalePrice * (1 - this.fees);
+                    let weekly = (netSale * salesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netSale * salesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            ebay: {
+                name: "eBay",
+                icon: "fa-tags",
+                fees: 0.13, // Approx 13% final value fee
+                tips: ["Source low-cost items.", "Optimize listings.", "Offer free shipping."],
+                fields: [
+                    {id: "sales-week", label: "Sales per Week", type: "number", min: 1, max: 500, default: 10, required: true},
+                    {id: "avg-sale-price", label: "Avg Sale Price", type: "number", min: 1, max: 1000, default: 30, required: true},
+                    {id: "cost-of-goods", label: "Avg Cost of Goods per Sale", type: "number", min: 0, max: 500, default: 10, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const salesWeek = parseFloat(inputs["sales-week"]) || 10;
+                    const avgSalePrice = parseFloat(inputs["avg-sale-price"]) || 30;
+                    const costOfGoods = parseFloat(inputs["cost-of-goods"]) || 10;
+
+                    let netSale = (avgSalePrice * (1 - this.fees)) - costOfGoods;
+                    let weekly = (netSale * salesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netSale * salesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            poshmark: {
+                name: "Poshmark",
+                icon: "fa-tshirt",
+                fees: 0.2, // 20% fee for sales over $15
+                tips: ["Take good photos.", "Share listings.", "Bundle items."],
+                fields: [
+                    {id: "sales-week", label: "Sales per Week", type: "number", min: 1, max: 500, default: 10, required: true},
+                    {id: "avg-sale-price", label: "Avg Sale Price", type: "number", min: 1, max: 500, default: 20, required: true},
+                    {id: "cost-of-goods", label: "Avg Cost of Goods per Sale", type: "number", min: 0, max: 200, default: 5, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const salesWeek = parseFloat(inputs["sales-week"]) || 10;
+                    const avgSalePrice = parseFloat(inputs["avg-sale-price"]) || 20;
+                    const costOfGoods = parseFloat(inputs["cost-of-goods"]) || 5;
+
+                    let netSale = (avgSalePrice * (1 - this.fees)) - costOfGoods;
+                    let weekly = (netSale * salesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netSale * salesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            depop: {
+                name: "Depop",
+                icon: "fa-shopping-bag",
+                fees: 0.1, // 10% fee
+                tips: ["Curate a unique style.", "Use social media.", "Price competitively."],
+                fields: [
+                    {id: "sales-week", label: "Sales per Week", type: "number", min: 1, max: 500, default: 10, required: true},
+                    {id: "avg-sale-price", label: "Avg Sale Price", type: "number", min: 1, max: 500, default: 15, required: true},
+                    {id: "cost-of-goods", label: "Avg Cost of Goods per Sale", type: "number", min: 0, max: 200, default: 5, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const salesWeek = parseFloat(inputs["sales-week"]) || 10;
+                    const avgSalePrice = parseFloat(inputs["avg-sale-price"]) || 15;
+                    const costOfGoods = parseFloat(inputs["cost-of-goods"]) || 5;
+
+                    let netSale = (avgSalePrice * (1 - this.fees)) - costOfGoods;
+                    let weekly = (netSale * salesWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netSale * salesWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            stockphotography: {
+                name: "Stock Photography",
+                icon: "fa-camera",
+                fees: 0.7, // Approx 30% royalty to photographer after platform cut
+                tips: ["Shoot in-demand subjects.", "Upload regularly.", "Tag images effectively."],
+                fields: [
+                    {id: "downloads-week", label: "Downloads per Week", type: "number", min: 1, max: 1000, default: 50, required: true},
+                    {id: "avg-royalty", label: "Avg Royalty per Download", type: "number", min: 0.1, max: 10, default: 0.5, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const downloadsWeek = parseFloat(inputs["downloads-week"]) || 50;
+                    const avgRoyalty = parseFloat(inputs["avg-royalty"]) || 0.5;
+
+                    let weekly = (downloadsWeek * avgRoyalty - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((downloadsWeek * avgRoyalty / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            airbnb: {
+                name: "Airbnb",
+                icon: "fa-home",
+                fees: 0.14, // 14% host service fee for strict cancellation policies
+                tips: ["Enhance your listing.", "Offer amenities.", "Respond quickly."],
+                fields: [
+                    {id: "listing-type", label: "Listing Type", type: "select", required: true, options: [
+                        {value: "private-room", text: "Private Room", multiplier: 0.8},
+                        {value: "entire-home", text: "Entire Home", multiplier: 1.2}
+                    ]},
+                    {id: "nightly-rate", label: "Nightly Rate", type: "number", min: 10, max: 1000, default: 100, required: true},
+                    {id: "bookings-week", label: "Booked Nights per Week", type: "number", min: 1, max: 7, default: 3, required: true},
+                    {id: "cleaning-fee", label: "Cleaning Fee per Booking", type: "number", min: 0, max: 200, default: 20, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const listingMultiplier = this.getOptionMultiplier("listing-type", inputs["listing-type"]);
+                    const nightlyRate = parseFloat(inputs["nightly-rate"]) || 100;
+                    const bookingsWeek = parseFloat(inputs["bookings-week"]) || 3;
+                    const cleaningFee = inputs["cleaning-fee"] ? parseFloat(inputs["cleaning-fee"]) : 0;
+
+                    let netNightly = (nightlyRate * listingMultiplier * (1 - this.fees)) + cleaningFee;
+                    let weekly = (netNightly * bookingsWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netNightly * bookingsWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            turo: {
+                name: "Turo",
+                icon: "fa-car",
+                fees: 0.25, // Approx 25% commission
+                tips: ["Keep your car clean.", "Set competitive prices.", "Offer delivery."],
+                fields: [
+                    {id: "car-type", label: "Car Type", type: "select", required: true, options: [
+                        {value: "economy", text: "Economy", multiplier: 0.8},
+                        {value: "luxury", text: "Luxury", multiplier: 1.5}
+                    ]},
+                    {id: "daily-rate", label: "Daily Rental Rate", type: "number", min: 20, max: 500, default: 50, required: true},
+                    {id: "bookings-week", label: "Rental Days per Week", type: "number", min: 1, max: 7, default: 3, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const carMultiplier = this.getOptionMultiplier("car-type", inputs["car-type"]);
+                    const dailyRate = parseFloat(inputs["daily-rate"]) || 50;
+                    const bookingsWeek = parseFloat(inputs["bookings-week"]) || 3;
+
+                    let netDaily = dailyRate * carMultiplier * (1 - this.fees);
+                    let weekly = (netDaily * bookingsWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netDaily * bookingsWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            rover: {
+                name: "Rover",
+                icon: "fa-dog",
+                fees: 0.2, // 20% service fee
+                tips: ["Get reviews.", "Offer extra services.", "Be reliable."],
+                fields: [
+                    {id: "service-type", label: "Service Type", type: "select", required: true, options: [
+                        {value: "dog-walking", text: "Dog Walking", multiplier: 0.8},
+                        {value: "pet-sitting", text: "Pet Sitting", multiplier: 1.2}
+                    ]},
+                    {id: "bookings-week", label: "Bookings per Week", type: "number", min: 1, max: 50, default: 5, required: true},
+                    {id: "avg-booking-fee", label: "Avg Fee per Booking", type: "number", min: 10, max: 200, default: 25, required: true},
+                    {id: "tips", label: "Avg Tips per Booking", type: "number", min: 0, max: 50, default: 5, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const serviceMultiplier = this.getOptionMultiplier("service-type", inputs["service-type"]);
+                    const bookingsWeek = parseFloat(inputs["bookings-week"]) || 5;
+                    const avgBookingFee = parseFloat(inputs["avg-booking-fee"]) || 25;
+                    const tips = inputs["tips"] ? parseFloat(inputs["tips"]) : 0;
+
+                    let netBooking = (avgBookingFee * serviceMultiplier * (1 - this.fees)) + tips;
+                    let weekly = (netBooking * bookingsWeek - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((netBooking * bookingsWeek / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            vipkid: {
+                name: "VIPKid",
+                icon: "fa-chalkboard-teacher",
+                fees: 0.0, // No platform fees, direct payment
+                tips: ["Be engaging.", "Schedule early slots.", "Use props."],
+                fields: [
+                    {id: "classes-week", label: "Classes per Week", type: "number", min: 1, max: 50, default: 10, required: true},
+                    {id: "pay-per-class", label: "Pay per Class", type: "number", min: 7, max: 22, default: 15, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const classesWeek = parseFloat(inputs["classes-week"]) || 10;
+                    const payPerClass = parseFloat(inputs["pay-per-class"]) || 15;
+
+                    let weekly = (classesWeek * payPerClass - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney((classesWeek * payPerClass / hours) / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            teachable: {
+                name: "Teachable",
+                icon: "fa-graduation-cap",
+                fees: 0.1, // 10% transaction fee on basic plan
+                tips: ["Create valuable courses.", "Market widely.", "Offer bonuses."],
+                fields: [
+                    {id: "students", label: "Enrolled Students", type: "number", min: 0, max: 10000, default: 50, required: true},
+                    {id: "course-price", label: "Course Price", type: "number", min: 10, max: 1000, default: 100, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const students = parseFloat(inputs["students"]) || 50;
+                    const coursePrice = parseFloat(inputs["course-price"]) || 100;
+
+                    let monthly = (students * coursePrice * (1 - this.fees) - expenses) / rate / 12; // Assuming sales spread over a year
+                    let weekly = monthly / 4.33;
+
+                    return {
+                        hourly: hours ? formatMoney(monthly / hours / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(monthly, currencySymbol),
+                        yearly: formatMoney(monthly * 12, currencySymbol)
+                    };
+                }
+            },
+            tutoring: {
+                name: "Online Tutoring",
+                icon: "fa-book",
+                fees: 0.2, // Assuming platform like Wyzant
+                tips: ["Specialize in a subject.", "Be patient.", "Get certifications."],
+                fields: [
+                    {id: "hourly-rate", label: "Hourly Rate", type: "number", min: 10, max: 100, default: 30, required: true},
+                    {id: "hours-week", label: "Hours per Week", type: "number", min: 1, max: 80, default: 10, required: true},
+                    {id: "students", label: "Students per Week", type: "number", min: 1, max: 50, default: 5, optional: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const hourlyRate = parseFloat(inputs["hourly-rate"]) || 30;
+                    const hoursWeek = parseFloat(inputs["hours-week"]) || 10;
+
+                    let netHourly = hourlyRate * (1 - this.fees);
+                    let weekly = (netHourly * hoursWeek - expenses) / rate;
+
+                    return {
+                        hourly: formatMoney(netHourly / rate, currencySymbol),
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                }
+            },
+            virtualassistant: {
+                name: "Virtual Assistant",
+                icon: "fa-headset",
+                fees: 0.0, // Typically direct contracts
+                tips: ["Specialize in tasks.", "Network on LinkedIn.", "Use organizational tools."],
+                fields: [
+                    {id: "experience-level", label: "Experience Level", type: "select", required: true, options: [
+                        {value: "beginner", text: "Beginner", multiplier: 0.7},
+                        {value: "expert", text: "Expert", multiplier: 1.3}
+                    ]},
+                    {id: "hourly-rate", label: "Hourly Rate", type: "number", min: 10, max: 50, default: 20, required: true},
+                    {id: "hours-week", label: "Hours per Week", type: "number", min: 1, max: 80, default: 20, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const experienceMultiplier = this.getOptionMultiplier("experience-level", inputs["experience-level"]);
+                    const hourlyRate = parseFloat(inputs["hourly-rate"]) || 20;
+                    const hoursWeek = parseFloat(inputs["hours-week"]) || 20;
+
+                    let netHourly = hourlyRate * experienceMultiplier;
+                    let weekly = (netHourly * hoursWeek - expenses) / rate;
+
+                    return {
+                        hourly: formatMoney(netHourly / rate, currencySymbol),
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            },
+            affiliatemarketing: {
+                name: "Affiliate Marketing",
+                icon: "fa-link",
+                fees: 0.0, // No platform fees, but costs in promotion
+                tips: ["Choose a niche.", "Build a blog.", "Track conversions."],
+                fields: [
+                    {id: "niche-type", label: "Niche Type", type: "select", required: true, options: [
+                        {value: "tech", text: "Tech", multiplier: 1.2},
+                        {value: "lifestyle", text: "Lifestyle", multiplier: 1.0}
+                    ]},
+                    {id: "clicks-week", label: "Clicks per Week", type: "number", min: 10, max: 10000, default: 100, required: true},
+                    {id: "conversion-rate", label: "Conversion Rate (%)", type: "number", min: 0.1, max: 20, default: 2, required: true},
+                    {id: "avg-commission", label: "Avg Commission per Sale", type: "number", min: 1, max: 500, default: 20, required: true}
+                ],
+                calculate: function(inputs, hours, expenses, currencySymbol, rate) {
+                    const nicheMultiplier = this.getOptionMultiplier("niche-type", inputs["niche-type"]);
+                    const clicksWeek = parseFloat(inputs["clicks-week"]) || 100;
+                    const conversionRate = parseFloat(inputs["conversion-rate"]) || 2;
+                    const avgCommission = parseFloat(inputs["avg-commission"]) || 20;
+
+                    let salesWeek = clicksWeek * (conversionRate / 100);
+                    let weekly = (salesWeek * avgCommission * nicheMultiplier - expenses) / rate;
+
+                    return {
+                        hourly: hours ? formatMoney(weekly / hours / rate, currencySymbol) : "N/A",
+                        weekly: formatMoney(weekly, currencySymbol),
+                        monthly: formatMoney(weekly * 4.33, currencySymbol),
+                        yearly: formatMoney(weekly * 52, currencySymbol)
+                    };
+                },
+                getOptionMultiplier: function(fieldId, selectedValue) {
+                    const field = this.fields.find(f => f.id === fieldId);
+                    return field?.options.find(o => o.value === selectedValue)?.multiplier || 1.0;
+                }
+            }
+            };
+
+            const currencies = {
+                USD: { symbol: "$", rate: 1.0, flag: "🇺🇸" },
+                EUR: { symbol: "€", rate: 0.91, flag: "🇪🇺" },
+                GBP: { symbol: "£", rate: 0.79, flag: "🇬🇧" },
+                CAD: { symbol: "$", rate: 1.35, flag: "🇨🇦" },
+                AUD: { symbol: "$", rate: 1.48, flag: "🇦🇺" },
+                JPY: { symbol: "¥", rate: 150.27, flag: "🇯🇵" },
+                INR: { symbol: "₹", rate: 83.95, flag: "🇮🇳" },
+                BRL: { symbol: "R$", rate: 5.57, flag: "🇧🇷" },
+                ZAR: { symbol: "R", rate: 17.65, flag: "🇿🇦" },
+                CHF: { symbol: "Fr", rate: 0.86, flag: "🇨🇭" }
+            };
+
+            function formatMoney(amount, symbol) {
+                return symbol + Math.max(0, amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            }
+
+            function createDynamicFields(hustleId) {
+                const container = document.getElementById('dynamic-fields');
+                container.innerHTML = '';
+                const hustle = hustles[hustleId];
+                if (hustle?.fields) {
+                    hustle.fields.forEach(field => {
+                        const div = document.createElement('div');
+                        div.className = 'form-group';
+                        if (field.optional) {
+                            const checkboxDiv = document.createElement('div');
+                            checkboxDiv.className = 'checkbox-group';
+                            const checkbox = document.createElement('input');
+                            checkbox.type = 'checkbox';
+                            checkbox.id = `enable-${field.id}`;
+                            checkbox.setAttribute('aria-label', `Enable ${field.label}`);
+                            const checkboxLabel = document.createElement('label');
+                            checkboxLabel.setAttribute('for', `enable-${field.id}`);
+                            checkboxLabel.textContent = `Include ${field.label}?`;
+                            checkboxDiv.appendChild(checkbox);
+                            checkboxDiv.appendChild(checkboxLabel);
+                            div.appendChild(checkboxDiv);
+
+                            const inputDiv = document.createElement('div');
+                            inputDiv.className = 'optional-field';
+                            inputDiv.id = `container-${field.id}`;
+                            const label = document.createElement('label');
+                            label.setAttribute('for', field.id);
+                            label.innerHTML = `${field.label}<span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Enter a realistic value for accurate results.</span></span>`;
+                            inputDiv.appendChild(label);
+                            div.appendChild(inputDiv);
+                        } else {
+                            const label = document.createElement('label');
+                            label.setAttribute('for', field.id);
+                            label.innerHTML = `${field.label}<span class="tooltip"><i class="fas fa-info-circle"></i><span class="tooltip-text">Enter a realistic value for accurate results.</span></span>`;
+                            div.appendChild(label);
+                        }
+
+                        if (field.type === 'select') {
+                            const select = document.createElement('select');
+                            select.id = field.id;
+                            select.name = field.id;
+                            if (field.required) select.required = true;
+                            select.setAttribute('aria-label', field.label);
+                            field.options.forEach(option => {
+                                const opt = document.createElement('option');
+                                opt.value = option.value;
+                                opt.textContent = option.text;
+                                select.appendChild(opt);
+                            });
+                            if (field.optional) {
+                                document.getElementById(`container-${field.id}`)?.appendChild(select);
+                            } else {
+                                div.appendChild(select);
+                            }
+                        } else if (field.type === 'number') {
+                            const input = document.createElement('input');
+                            input.type = 'number';
+                            input.id = field.id;
+                            input.name = field.id;
+                            input.min = field.min;
+                            input.max = field.max;
+                            input.placeholder = `e.g., ${field.default}`;
+                            input.value = field.default;
+                            if (field.required) input.required = true;
+                            input.setAttribute('aria-label', field.label);
+                            if (field.optional) {
+                                document.getElementById(`container-${field.id}`)?.appendChild(input);
+                            } else {
+                                div.appendChild(input);
+                            }
+                            const error = document.createElement('div');
+                            error.id = `${field.id}-error`;
+                            error.className = 'error';
+                            error.textContent = `Please enter a value between ${field.min} and ${field.max}.`;
+                            div.appendChild(error);
+                        }
+                        container.appendChild(div);
+
+                        if (field.optional) {
+                            const checkbox = document.getElementById(`enable-${field.id}`);
+                            const inputContainer = document.getElementById(`container-${field.id}`);
+                            checkbox.addEventListener('change', () => {
+                                inputContainer.style.display = checkbox.checked ? 'block' : 'none';
+                                const input = inputContainer.querySelector(`#${field.id}`);
+                                if (input) input.disabled = !checkbox.checked;
+                            });
+                        }
+                    });
+                }
+                document.getElementById('calculator-explanation').innerHTML = hustle ?
+                    `<p>Selected <strong>${hustle.name}</strong>. Enter details for a tailored estimate.</p>` :
+                    `<p>Select a side hustle to see tailored calculations.</p>`;
+            }
+
+            function validateInputs() {
+                let isValid = true;
+                const hours = document.getElementById('hours');
+                const hoursError = document.getElementById('hours-error');
+                if (hours.value && (hours.value < 1 || hours.value > 168)) {
+                    hoursError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    hoursError.style.display = 'none';
+                }
+                const hustleId = document.getElementById('hustle').value;
+                const hustle = hustles[hustleId];
+                if (hustle?.fields) {
+                    hustle.fields.forEach(field => {
+                        if (field.type === 'number' && field.required) {
+                            const input = document.getElementById(field.id);
+                            const error = document.getElementById(`${field.id}-error`);
+                            if (input && input.value && (input.value < field.min || input.value > field.max)) {
+                                error.style.display = 'block';
+                                isValid = false;
+                            } else if (error) {
+                                error.style.display = 'none';
+                            }
+                        }
+                    });
+                }
+                return isValid;
+            }
+
+            function updateTips(hustleId) {
+                const tipsList = document.getElementById('tips-list');
+                tipsList.innerHTML = '';
+                const hustle = hustles[hustleId];
+                if (hustle?.tips) {
+                    hustle.tips.forEach(tip => {
+                        const li = document.createElement('li');
+                        li.textContent = tip;
+                        tipsList.appendChild(li);
+                    });
+                }
+            }
+
+            function calculateEarnings() {
+                if (!validateInputs()) return;
+                const loading = document.getElementById('loading');
+                loading.style.display = 'block';
+                setTimeout(() => {
+                    const hustleId = document.getElementById('hustle').value;
+                    const hours = parseFloat(document.getElementById('hours').value) || 0;
+                    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+                    const currency = currencies[document.getElementById('currency-selector').value];
+                    const hustle = hustles[hustleId];
+                    if (!hustle) return;
+
+                    const inputs = {};
+                    hustle.fields?.forEach(field => {
+                        const input = document.getElementById(field.id);
+                        if (field.optional) {
+                            const checkbox = document.getElementById(`enable-${field.id}`);
+                            if (checkbox?.checked && input && !input.disabled) {
+                                inputs[field.id] = input.value;
+                            }
+                        } else if (input) {
+                            inputs[field.id] = input.value;
+                        }
+                    });
+
+                    const earnings = hustle.calculate(inputs, hours, expenses, currency.symbol, currency.rate);
+
+                    document.getElementById('hourly').textContent = earnings.hourly;
+                    document.getElementById('weekly').textContent = earnings.weekly;
+                    document.getElementById('monthly').textContent = earnings.monthly;
+                    document.getElementById('yearly').textContent = earnings.yearly;
+                    document.getElementById('results').style.display = 'block';
+                    document.getElementById('calculator-explanation').style.display = 'none';
+                    updateTips(hustleId);
+                    updatePageMetadata(hustle.name);
+                    loading.style.display = 'none';
+                }, 500);
+            }
+
+            function updatePageMetadata(hustleName) {
+                document.title = `${hustleName} Income Calculator - SideHustleCalc`;
+                document.getElementById('page-title').textContent = `${hustleName} Income Calculator`;
+                const metaDescription = document.querySelector('meta[name="description"]');
+                metaDescription.setAttribute('content', `Calculate your ${hustleName} earnings with our free calculator. Get accurate estimates for hourly, weekly, monthly, and yearly income tailored to your inputs.`);
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                ogTitle.setAttribute('content', `${hustleName} Income Calculator`);
+                const ogDescription = document.querySelector('meta[property="og:description"]');
+                ogDescription.setAttribute('content', `Estimate your ${hustleName} income with our free, tailored calculator for 2025.`);
+                const url = new URL(window.location);
+                url.searchParams.set('hustle', hustleName.toLowerCase().replace(/\s+/g, '-'));
+                window.history.pushState({}, '', url);
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const currencySelector = document.getElementById('currency-selector');
+                currencySelector.innerHTML = Object.keys(currencies).map(c =>
+                    `<option value="${c}" data-flag="${currencies[c].flag}">${currencies[c].flag} ${c}</option>`
+                ).join('');
+                currencySelector.addEventListener('change', () => {
+                    if (document.getElementById('results').style.display === 'block') {
+                        calculateEarnings();
+                    }
+                });
+
+                document.getElementById('hustle').addEventListener('change', () => {
+                    const hustleId = document.getElementById('hustle').value;
+                    createDynamicFields(hustleId);
+                    updatePageMetadata(hustles[hustleId]?.name || "Side Hustle");
+                });
+
+                document.getElementById('calculator-form').addEventListener('submit', e => {
+                    e.preventDefault();
+                    calculateEarnings();
+                });
+
+                document.getElementById('calculator-form').addEventListener('reset', () => {
+                    document.getElementById('results').style.display = 'none';
+                    document.getElementById('calculator-explanation').style.display = 'block';
+                    document.getElementById('dynamic-fields').innerHTML = '';
+                    document.getElementById('hourly').textContent = '$0';
+                    document.getElementById('weekly').textContent = '$0';
+                    document.getElementById('monthly').textContent = '$0';
+                    document.getElementById('yearly').textContent = '$0';
+                    document.title = 'Side Hustle Income Calculator - Estimate Your Earnings';
+                    document.getElementById('page-title').textContent = 'Side Hustle Income Calculator';
+                    const metaDescription = document.querySelector('meta[name="description"]');
+                    metaDescription.setAttribute('content', `Calculate earnings from 30+ side hustles like Uber, Fiverr, DoorDash, and Airbnb with our free, tailored calculator. Estimate hourly, weekly, monthly, and yearly income accurately.`);
+                    const ogTitle = document.querySelector('meta[property="og:title"]');
+                    ogTitle.setAttribute('content', `Side Hustle Income Calculator`);
+                    window.history.pushState({}, '', '/calculator.html');
+                });
+
+                document.querySelectorAll('.faq-question').forEach(question => {
+                    question.addEventListener('click', () => {
+                        const faqItem = question.parentElement;
+                        const answer = faqItem.querySelector('.faq-answer');
+                        const isActive = answer.classList.contains('active');
+                        document.querySelectorAll('.faq-answer.active').forEach(a => a.classList.remove('active'));
+                        document.querySelectorAll('.faq-question.active').forEach(q => q.classList.remove('active'));
+                        if (!isActive) {
+                            answer.classList.add('active');
+                            question.classList.add('active');
+                        }
+                    });
+                });
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const hustleParam = urlParams.get('hustle');
+                if (hustleParam && hustles[hustleParam.replace(/-/g, '')]) {
+                    const hustleId = hustleParam.replace(/-/g, '');
+                    document.getElementById('hustle').value = hustleId;
+                    createDynamicFields(hustleId);
+                    updatePageMetadata(hustles[hustleId].name);
+                }
+
+                document.getElementById('calculator-form').addEventListener('input', validateInputs);
+            });
+
+            window.addEventListener('popstate', () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const hustleParam = urlParams.get('hustle');
+                const hustleSelector = document.getElementById('hustle');
+                if (hustleParam && hustles[hustleParam.replace(/-/g, '')]) {
+                    const hustleId = hustleParam.replace(/-/g, '');
+                    hustleSelector.value = hustleId;
+                    createDynamicFields(hustleId);
+                    updatePageMetadata(hustles[hustleId].name);
+                } else {
+                    hustleSelector.value = '';
+                    document.getElementById('dynamic-fields').innerHTML = '';
+                    document.title = 'Side Hustle Income Calculator - Estimate Your Earnings';
+                    document.getElementById('page-title').textContent = 'Side Hustle Income Calculator';
+                    const metaDescription = document.querySelector('meta[name="description"]');
+                    metaDescription.setAttribute('content', `Calculate earnings from 30+ side hustles like Uber, Fiverr, DoorDash, and Airbnb with our free, tailored calculator. Estimate hourly, weekly, monthly, and yearly income accurately.`);
+                    const ogTitle = document.querySelector('meta[property="og:title"]');
+                    ogTitle.setAttribute('content', `Side Hustle Income Calculator`);
+                }
+            });
+            </script></body></html>

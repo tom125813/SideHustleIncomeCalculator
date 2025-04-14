@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SideHustleCalc Blog - All Articles</title>
+    <meta name="description" content="Explore all SideHustleCalc articles on side hustles like Uber, Etsy, and Upwork. Learn how to maximize your earnings in 2025 with expert tips.">
+    <meta name="keywords" content="side hustle blog, uber tips, etsy guide, upwork freelancing, side hustle 2025">
+    <!-- Open Graph -->
+    <meta property="og:title" content="SideHustleCalc Blog - All Articles">
+    <meta property="og:description" content="Read expert guides on side hustles like Uber, Etsy, and Upwork to maximize your earnings in 2025.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sidehustlecalc.com/blogs.html">
+    <meta property="og:image" content="https://placehold.co/1200x630?text=SideHustleCalc+Blog">
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "SideHustleCalc Blog",
+        "url": "https://sidehustlecalc.com/blogs.html",
+        "description": "A collection of articles on maximizing side hustle earnings in 2025."
+    }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --background: #f8fafc;
+            --card: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --card-shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e2e8f0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(231, 235, 240, 0.8);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .nav-options {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-options a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-options a:hover {
+            color: var(--primary);
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, var(--primary) 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .ad {
+            margin: 20px 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .ad-header {
+            height: 90px;
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+        }
+
+        .articles-section {
+            margin: 60px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .article-card-content {
+            padding: 15px;
+        }
+
+        .article-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .article-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .article-card a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .article-card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.7);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1rem; }
+            .ad-header { height: 60px; }
+            h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-calculator"></i>
+                SideHustleCalc
+            </a>
+            <div class="nav-options">
+                <a href="index.html">Home</a>
+                <a href="calculator.html">Calculator</a>
+                <a href="blogs.html">Blogs</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="ad ad-header">
+            <img src="https://placehold.co/728x90?text=Advertisement" alt="Advertisement" />
+        </div>
+
+        <header>
+            <h1>Best Side Hustles in 2025</h1>
+            <p class="subtitle">Explore all our expert guides to maximize your side hustle earnings in 2025.</p>
+        </header>
+
+        <section class="articles-section">
+            <h2>All Articles</h2>
+            <div class="article-grid">
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Uber+Guide" alt="Uber Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/uber.html">How to Maximize Uber Earnings in 2025</a></h3>
+                        <p>Tips to boost your income as an Uber driver in 2025.</p>
+                        <a href="calculator.html?hustle=uber">Calculate Uber Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=DoorDash+Guide" alt="DoorDash Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/doordash.html">How to Maximize Your DoorDash Earnings in 2025</a></h3>
+                        <p>Boost your income with delivery strategies.</p>
+                        <a href="calculator.html?hustle=doordash">Calculate DoorDash Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Etsy+Guide" alt="Etsy Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/etsy.html">How to Start an Etsy Side Hustle in 2025</a></h3>
+                        <p>Launch a profitable shop with trending products.</p>
+                        <a href="calculator.html?hustle=etsy">Calculate Etsy Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Instagram+Guide" alt="Instagram Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/instagram.html">How to Start an Instagram Side Hustle in 2025</a></h3>
+                        <p>Monetize your account with these strategies.</p>
+                        <a href="calculator.html?hustle=instagram">Calculate Instagram Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Patreon+Guide" alt="Patreon Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/patreon.html">How to Build a Patreon Side Hustle in 2025</a></h3>
+                        <p>Build a fan-funded side hustle as a creator.</p>
+                        <a href="calculator.html?hustle=patreon">Calculate Patreon Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Rover+Guide" alt="Rover Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/rover.html">How to Make Money with Rover in 2025</a></h3>
+                        <p>Turn pet sitting into a profitable side hustle.</p>
+                        <a href="calculator.html?hustle=rover">Calculate Rover Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Stock+Photography" alt="Stock Photography Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/stockphotography.html">How to Earn Passive Income with Stock Photography in 2025</a></h3>
+                        <p>Earn passive income with your photos.</p>
+                        <a href="calculator.html?hustle=stockphotography">Calculate Stock Photography Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=TaskRabbit+Guide" alt="TaskRabbit Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/taskrabbit.html">How to Start a TaskRabbit Side Hustle in 2025</a></h3>
+                        <p>Earn money with high-demand tasks.</p>
+                        <a href="calculator.html?hustle=taskrabbit">Calculate TaskRabbit Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Tutoring+Guide" alt="Tutoring Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/tutoring.html">How to Start an Online Tutoring Side Hustle in 2025</a></h3>
+                        <p>Share your knowledge and earn money online.</p>
+                        <a href="calculator.html?hustle=tutoring">Calculate Tutoring Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Upwork+Guide" alt="Upwork Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/upwork.html">How to Succeed on Upwork as a Side Hustle in 2025</a></h3>
+                        <p>Land high-paying freelance gigs with ease.</p>
+                        <a href="calculator.html?hustle=upwork">Calculate Upwork Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Virtual+Assistant" alt="Virtual Assistant Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/virtualassistant.html">How to Become a Virtual Assistant in 2025</a></h3>
+                        <p>Start a flexible remote side hustle.</p>
+                        <a href="calculator.html?hustle=virtualassistant">Calculate Virtual Assistant Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Fiverr+Guide" alt="Fiverr Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/fiverr.html">Starting a Fiverr Side Hustle in 2025</a></h3>
+                        <p>Learn how to land high-paying gigs on Fiverr.</p>
+                        <a href="calculator.html?hustle=fiverr">Calculate Fiverr Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=TikTok+Guide" alt="TikTok Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/tiktok.html">How to Make Money on TikTok as a Side Hustle in 2025</a></h3>
+                        <p>Turn TikTok into a profitable side hustle.</p>
+                        <a href="calculator.html?hustle=tiktok">Calculate TikTok Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=YouTube+Guide" alt="YouTube Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/youtube.html">How to Start a YouTube Channel as a Side Hustle in 2025</a></h3>
+                        <p>Turn your passion into profit with YouTube.</p>
+                        <a href="calculator.html?hustle=youtube">Calculate YouTube Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Affiliate+Guide" alt="Affiliate Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/affiliatemarketing.html">How to Start Affiliate Marketing as a Side Hustle in 2025</a></h3>
+                        <p>Earn commissions with affiliate marketing.</p>
+                        <a href="calculator.html?hustle=affiliatemarketing">Calculate Affiliate Marketing Earnings</a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <img src="https://placehold.co/280x150?text=Substack+Guide" alt="Substack Guide">
+                    <div class="article-card-content">
+                        <h3><a href="blog/substack.html">How to Make Money with Substack in 2025</a></h3>
+                        <p>Monetize your writing with a newsletter.</p>
+                        <a href="calculator.html?hustle=substack">Calculate Substack Earnings</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ad ad-header">
+            <img src="https://placehold.co/728x90?text=Advertisement" alt="Advertisement" />
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 SideHustleCalc. All rights reserved. Updated with 2025 rates.</p>
+        </div>
+    </footer>
+</body>
+</html>
